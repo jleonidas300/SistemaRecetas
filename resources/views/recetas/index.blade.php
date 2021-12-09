@@ -7,6 +7,7 @@
 @section('content')
 
 <h1 class="text-center mb-5">Recetas</h1>
+
 <div class="col-md-12 mx-auto bg-secondary p-3">
 
     <table class="table">
@@ -18,11 +19,19 @@
                 </TR>
         </thead>
     <tbody>
-        <tr>
-            <td>Pollo</td>
-            <td>Comidas</td>
-            <td>||</td>
-        </tr>
+
+        @foreach ($recetas as $receta)
+            <tr>
+                <td> {{ $receta->titulo }} </td>
+                <td> {{ $receta->categoria->nombre }} </td>
+                <td>
+                    <a class="btn btn-success mr-1" type="">Ver</a>
+                    <a class="btn btn-dark mr-1" type="button">Edit</a>
+                    <a class="btn btn-danger mr-1" type="button">X</a>
+                </td>
+            </tr>
+        @endforeach
+
     </tbody>
     </table>
 
