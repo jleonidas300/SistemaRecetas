@@ -16,4 +16,14 @@ class Receta extends Model
     {
         return $this->belongsTo(CategoriaReceta::class);
     }
+
+    //se obtiene el auto mediante la relacion con la tabla users
+    public function autor()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    //likes de una receta
+    public function likes(){
+        return $this->belongsToMany(User::class, 'likes_receta');
+    }
 }

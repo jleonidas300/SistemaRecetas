@@ -3,6 +3,11 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import 'owl.carousel';
+
+//importando vue 2 para alertas
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 require('./bootstrap');
 
@@ -19,7 +24,17 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+Vue.use(VueSweetalert2);
+//creo un nuevo llamado a componente de Vue para la fecha
+Vue.component('fecha-receta', require('./components/FechaReceta.vue').default);
+//para eliminar
+Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default);
+
+Vue.component('like-button', require('./components/LikeButton.vue').default);
+
+Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,3 +45,30 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+$('.like-btn').on('click', function() {
+    $(this).toggleClass('like-active');
+ });
+
+  //carousel con jquery owl
+ jQuery(function(){
+    jQuery('.owl-carousel').owlCarousel({
+        margin: 10,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive: {
+            0 : {
+                items: 1
+            },
+            600 : {
+                items: 2,
+                nav: true,
+            },
+            1000 : {
+                items: 3,
+                nav: true,
+            },
+        }
+    });
+ });
