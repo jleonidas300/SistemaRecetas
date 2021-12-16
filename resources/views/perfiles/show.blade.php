@@ -1,6 +1,6 @@
 @extends('layouts.app');
 @section('botones')
-<a href="{{ route('recetas.index') }}" title="Inicio" class="btn btn-info text-white" ><i class="fas fa-home"></i>Inicio</a>
+<a href="{{ route('inicio.index') }}" title="Inicio" class="btn btn-info text-white" ><i class="fas fa-home"></i>Inicio</a>
 @endsection
 @section('content')
 

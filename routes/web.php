@@ -23,7 +23,11 @@ Route::get('/recetas/{receta}/edit', 'RecetaController@edit')->name('recetas.edi
 Route::put('/recetas/{receta}', 'RecetaController@update')->name('recetas.update');
 Route::delete('/recetas/{receta}', 'RecetaController@destroy')->name('recetas.destroy');
 
+Route::get('/categoria/{categoriaReceta}', 'CategoriasController@show')->name('categorias.show');
 //Route::resource('recetas', 'RecetaController'); forma corta de manejar las rutas
+
+//buscar receta
+Route::get('/buscar', 'RecetaController@search')->name('buscar.show');
 
 Route::get('/perfiles/{perfil}', 'PerfilController@show')->name('perfiles.show');
 Route::get('/perfiles/{perfil}/edit', 'PerfilController@edit')->name('perfiles.edit');

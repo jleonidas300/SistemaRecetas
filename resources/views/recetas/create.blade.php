@@ -6,7 +6,7 @@
 
 
 @section('botones')
-<a href="{{ route('recetas.index') }}" title="Inicio" class="btn btn-info text-white" ><i class="fas fa-home"></i></a>
+<a href="{{ route('inicio.index') }}" title="Inicio" class="btn btn-info text-white" ><i class="fas fa-home"></i></a>
 @endsection
 
 @section('content')

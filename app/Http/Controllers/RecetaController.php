@@ -13,7 +13,7 @@ class RecetaController extends Controller
 {
     //proteger el acceso a los metodos
     public function __construct(){
-        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('auth', ['except' => ['show', 'search']]);
     }
 
     /**
@@ -196,5 +196,17 @@ class RecetaController extends Controller
         $receta->delete();
           //redireccionamos
         return redirect()->action('RecetaController@index');
+    }
+
+    //funcion para buscar
+    public function search(Request $request){
+        //$busqueda = $request['buscar'];
+
+        $busqueda = $request->get('buscar');
+
+        $recetas = Receta::where('titulo', 'like', '%' .$busqueda. '%')->paginate(3);
+        $recetas->appends(['buscar' => $busqueda ]);
+
+        return view('busquedas.show', compact('recetas', 'busqueda'));
     }
 }
